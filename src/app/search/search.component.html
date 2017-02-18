@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="well clearfix">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input name="cad" [(ngModel)]="searchTerm" (keyup)="search()" type="text" class="form-control" placeholder="Procurar por artista">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+
+            <div class="bs-example" data-example-id="panel-without-body-with-table">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Relatório</div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>IMG</th>
+                            <th>Popularidade</th>
+                            <th>Tipo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr  *ngFor="let result of results">
+                            <th scope="row"><a routerLink="/artist/{{result.id}}">{{ result.name }} {{result.images.length}} </a></th>
+                            <td *ngIf="result.images.length"><img src="{{ result.images[0].url }}" width="30"></td>
+                            <td *ngIf="!result.images.length">-</td>
+                            <td>{{ result.popularity }}</td>
+                            <td>{{ result.type }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
